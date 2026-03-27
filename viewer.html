@@ -55,13 +55,12 @@
     import * as GaussianSplats3D from '@mkkellogg/gaussian-splats-3d';
 
     const viewer = new GaussianSplats3D.Viewer({
-        'cameraUp': [0, -1, 0],
-        'initialCameraPosition': [0, 0, 1.5],
-        'initialCameraLookAt': [0, 0, 0],
-        'sharedMemoryForWorkers': false,
-        'useWasm': true,
-        'halfResolution': true // Forces downscaling to improve FPS
-        });
+      'cameraUp': [0, -1, 0],
+      'initialCameraPosition': [0, 0, 1.5], 
+      'initialCameraLookAt': [0, 0, 0],
+      'sharedMemoryForWorkers': false,
+      'useWasm': true
+    });
 
     viewer.addSplatScene('assets/bottle.ksplat', {
       'showLoadingUI': true,
