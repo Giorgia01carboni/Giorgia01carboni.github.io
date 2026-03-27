@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3DGS Viewer - Giorgia Carboni</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin: 0; overflow: hidden; background-color: #1a1a1a; font-family: -apple-system, blinkmacsystemfont, segoe ui, roboto, sans-serif; }
+    canvas { display: block; width: 100vw; height: 100vh; }
+    
+    /* Navigation */
+    .back-btn {
+      position: absolute; top: 20px; left: 20px; z-index: 10;
+      color: white; text-decoration: none; font-size: 0.9rem;
+      background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(4px);
+    }
+    .back-btn:hover { background: rgba(255,255,255,0.2); }
+
+    /* Metadata Overlay */
+    .metadata-panel {
+      position: absolute; bottom: 20px; left: 20px; z-index: 10;
+      color: #e4e6e7; background: rgba(24, 26, 27, 0.85); 
+      padding: 16px; border-radius: 6px; border: 1px solid #3b4044;
+      max-width: 400px; backdrop-filter: blur(4px);
+    }
+    .metadata-panel h2 { margin: 0 0 8px 0; font-size: 1.1rem; color: #fff; }
+    .metadata-panel p { margin: 0; font-size: 0.85rem; line-height: 1.4; color: #bbbfc4; }
+    .metadata-panel .tech-tag {
+      display: inline-block; background: #2b2d42; color: #fff;
+      padding: 2px 6px; border-radius: 3px; font-size: 0.75rem; margin-top: 8px;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.157.0/build/three.module.js",
+        "@mkkellogg/gaussian-splats-3d": "https://unpkg.com/@mkkellogg/gaussian-splats-3d@latest/build/gaussian-splats-3d.module.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <a href="index.html" class="back-btn">← Back to Portfolio</a>
+  
+  <div class="metadata-panel">
+    <h2>High-Fidelity 3DGS Reconstruction</h2>
+    <p>Custom gradient-based optimization executed via <code>gsplat</code>. Source data acquired from custom video input, processed with Google FILM for temporal upsampling to increase SfM pose density prior to COLMAP initialization.</p>
+    <div class="tech-tag">gsplat</div>
+    <div class="tech-tag">Google FILM</div>
+    <div class="tech-tag">COLMAP</div>
+  </div>
+
+  <script type="module">
+    import * as GaussianSplats3D from '@mkkellogg/gaussian-splats-3d';
+
+    const viewer = new GaussianSplats3D.Viewer({
+      'cameraUp': [0, -1, 0],
+      'initialCameraPosition': [0, 0, 1.5], 
+      'initialCameraLookAt': [0, 0, 0],
+      'sharedMemoryForWorkers': false,
+      'useWasm': true
+    });
+
+    viewer.addSplatScene('assets/bottle.ksplat', {
+      'showLoadingUI': true,
+      'position': [0, 0, 0],
+      'rotation': [1, 0, 0, 0], // Quaternion (x, y, z, w) for 180-deg X-axis rotation
+      'scale': [1.0, 1.0, 1.0]
+    }).then(() => {
+      viewer.start();
+    }).catch((err) => {
+      console.error("Rasterization failed:", err);
+    });
+  </script>
+</body>
+</html>
