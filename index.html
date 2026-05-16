@@ -98,13 +98,29 @@
     Focusing on kernel optimization for real-time rasterization, volumetric rendering efficiency, and temporal super-sampling for dynamic scenes.
   </small><br />
 </p>
-<p>
-  <strong><a href="https://github.com/OpenGL-Quadrics-Unimi/GPU-RayCasting-Quadrics" target="_blank">GPU-Based Ray-Casting of Quadratic Surfaces (C++/OpenGL/GLSL)</a></strong><br />
-  <small>
-    <span style="color: #6b737b; font-style: italic;">In Progress.</span> 
-    Collaborative academic project implementing per-pixel ray-casting for quadratic primitives via a programmable GPU pipeline. Bypasses standard tessellation by solving homogeneous intersection equations directly in the fragment shader to optimize rendering workloads.
-  </small><br />
-</p>
+<div>
+  <p>
+    <strong><a href="https://github.com/OpenGL-Quadrics-Unimi/GPU-RayCasting-Quadrics" target="_blank">GPU-Based Ray-Casting of Quadratic Surfaces (C++/OpenGL/GLSL)</a></strong><br />
+    <small>
+      Collaborative academic project implementing per-pixel ray-casting for quadratic primitives via a programmable GPU pipeline. Bypasses standard tessellation by solving homogeneous intersection equations directly in the fragment shader to optimize rendering workloads.
+    </small>
+  </p>
+  <div class="demo-thumb" onclick="openQuadricDemo()" title="Launch live demo">
+    <img src="assets/quadric-preview.png" alt="GPU ray-casting demo — molecules rendered with shadows and ambient occlusion">
+    <div class="play-overlay">
+      <span class="play-btn">▶</span>
+      <span class="play-label">Live demo</span>
+    </div>
+  </div>
+</div>
+
+<!-- Quadric demo modal -->
+<div id="quadric-modal" class="demo-modal" onclick="handleModalClick(event)">
+  <div class="demo-modal-box">
+    <button class="demo-modal-close" onclick="closeQuadricDemo()">✕</button>
+    <iframe id="quadric-frame" src="" allow="fullscreen" scrolling="no"></iframe>
+  </div>
+</div>
 <p>
   <strong><a href="#">Video Frame Interpolation & Upsampling (C++/Python)</a></strong><br />
   <small>Working on frame interpolation and resolution upsampling for custom videos, leveraging Nvidia DLSS (RTX 4090), optical flow, and <strong><a href="https://docs.nvidia.com/video-technologies/optical-flow-sdk/nvfruc-programming-guide/index.html">NVOFA FRUC.</a></strong></small><br />
@@ -178,5 +194,24 @@
   </div>
 </section>
 </main>
+
+<script>
+  function openQuadricDemo() {
+    document.getElementById('quadric-frame').src = 'demos/quadric/index.html';
+    document.getElementById('quadric-modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeQuadricDemo() {
+    document.getElementById('quadric-frame').src = 'about:blank';
+    document.getElementById('quadric-modal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function handleModalClick(e) {
+    if (e.target === document.getElementById('quadric-modal')) closeQuadricDemo();
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeQuadricDemo();
+  });
+</script>
 </body>
 </html>
