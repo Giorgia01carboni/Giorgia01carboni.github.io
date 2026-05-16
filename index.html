@@ -66,7 +66,7 @@
           <a href="https://fifthingenium.com/" target="_blank" style="text-decoration: underline;">Fifth Ingenium</a> • Milan • May 2025 - May 2026
         </div>
         <p class="t--size-m">
-          Fine-tuned VLMs using QLoRA for <b>industrial environments</b>, reducing memory footprint by 2.5x for consumer GPUs. Built automated <b>synthetic data pipelines</b> for spatial positioning and object classification. Developed asynchronous microservices (FastAPI, Celery) for Mixed Reality assistants and orchestrated PyTorch frameworks for 2D-3D embedding alignment (<b>CLIP/Sonata</b>).
+          Fine-tuned VLMs using QLoRA for <b>industrial environments</b>, reducing memory footprint by 2.5x for consumer GPUs. Built automated <b>synthetic data pipelines</b> for spatial positioning and object classification. Developed asynchronous microservices (FastAPI, RabbitMQ, Celery) for Mixed Reality assistants and orchestrated PyTorch frameworks for 2D-3D embedding alignment (<b>CLIP/Sonata</b>). Built an <b>RGB-D perception tool</b> (Gradio + SAM) for real-time segmentation and 3D point cloud generation from single RGB images.
         </p>
       </div>
     </div>
@@ -132,6 +132,10 @@
 
 <p><strong>Past Projects:</strong></p>
 <p>
+  <strong><a href="https://github.com/Giorgia01carboni/GPU-Optical-Flow" target="_blank">GPU Optical Flow (CUDA)</a></strong><br />
+  <small>Pyramidal multi-scale optical flow pipeline for real-time video processing, implemented entirely on the GPU using CUDA.</small><br />
+</p>
+<p>
   <strong><a href="https://github.com/Giorgia01carboni/decision-tree-for-binary-classification" target="_blank">Tree Predictor for binary classification (Python)</a></strong><br />
   <small>Implemented a tree predictor from scratch using Gini index/entropy, applied to classify poisonous mushrooms.</small><br />
 </p>
@@ -156,11 +160,11 @@
     <div class="skill-category">
       <h4 class="t--size-m t--weight-bold c--gray-darker">AI & Computer Vision</h4>
       <ul class="skill-list">
-        <li>PyTorch, Pandas, Numpy, Sklearn</li>
+        <li>PyTorch, Distributed Training (torchrun)</li>
+        <li>Agentic Workflows, RAG, VLMs, QLoRA</li>
+        <li>Quantization (FP16/INT8), GPU Optimization</li>
         <li>Hugging Face Transformers & LMMs</li>
-        <li>Distributed Training (torchrun)</li>
-        <li>GPU Memory Optimization</li>
-        <li>OpenCV, MediaPipe</li>
+        <li>OpenCV, SAM, MediaPipe</li>
       </ul>
     </div>
 
@@ -168,7 +172,8 @@
       <h4 class="t--size-m t--weight-bold c--gray-darker">3D & VR Development</h4>
       <ul class="skill-list">
         <li>CUDA, Open3D</li>
-        <li>Unity Engine</li>
+        <li>Gaussian Splatting, COLMAP, BlenderProc</li>
+        <li>Unity Engine, OpenXR</li>
         <li>VR Systems & Simulation</li>
       </ul>
     </div>
@@ -177,9 +182,9 @@
       <h4 class="t--size-m t--weight-bold c--gray-darker">Web & Infrastructure</h4>
       <ul class="skill-list">
         <li>FastAPI, Gradio</li>
-        <li>Docker, AWS (Basic)</li>
+        <li>RabbitMQ, Celery</li>
+        <li>Docker, AWS</li>
         <li>PostgreSQL + PGVector</li>
-        <li>Unix Shell, Vim</li>
       </ul>
     </div>
 
